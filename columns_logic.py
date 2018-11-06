@@ -616,27 +616,27 @@ def new_game_field(row_size: int, col_size: int) -> Field:
     return field
 
 
-def new_content_field(content_list: list) -> Field:
-    '''
-    This function takes a pre specified list of colors for each desired cell
-    and creates a Content Field with these cells.
-    '''
-    content_field = []
+# def new_content_field(content_list: list) -> Field:
+#     '''
+#     This function takes a pre specified list of colors for each desired cell
+#     and creates a Content Field with these cells.
+#     '''
+#     content_field = []
 
-    col_counter = 0
-    for row in range(len(content_list)):
-        content_field.append([])
-        cell_counter = 0
-        cell_list = content_list[col_counter][0]
-        for cell_color in cell_list:
-            if cell_color == ' ':
-                new_cell = Cell(cell_color, 'EMPTY', row, cell_counter)
-            else:
-                new_cell = Cell(cell_color, 'FROZEN', row, cell_counter)
+#     col_counter = 0
+#     for row in range(len(content_list)):
+#         content_field.append([])
+#         cell_counter = 0
+#         cell_list = content_list[col_counter][0]
+#         for cell_color in cell_list:
+#             if cell_color == ' ':
+#                 new_cell = Cell(cell_color, 'EMPTY', row, cell_counter)
+#             else:
+#                 new_cell = Cell(cell_color, 'FROZEN', row, cell_counter)
 
-            content_field[-1].append(new_cell)
-            cell_counter += 1
-        col_counter += 1
+#             content_field[-1].append(new_cell)
+#             cell_counter += 1
+#         col_counter += 1
 
-    field = Field(len(content_field), len(content_field[0]), content_field)
-    return field
+#     field = Field(len(content_field), len(content_field[0]), content_field)
+#     return field

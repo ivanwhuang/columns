@@ -64,31 +64,9 @@ class ColumnsGame():
         '''
         field_rows = int(input("# of ROWS for Game Board: "))
         field_columns = int(input("# of COLUMNS for Game Board: "))
-        self._set_field_setting(field_rows, field_columns)
-        self.display_board()
-
-    def _set_field_setting(self,rows: int, cols: int) -> None:
-        '''
-        This function determines whether the game will start off with
-        an empty board or board filled with initialized cells.
-        '''
-
-        field_setting = input("What type of board would you like to start off with? ('EMPTY') or ('CONTENTS): ")
-        if field_setting == 'EMPTY':
-            empty_field = columns_logic.new_game_field(rows, cols)
-            self._game_field = empty_field
-
-        elif field_setting == 'CONTENTS':
-            content_cells = []
-            for row in range(rows):
-                content_cells.append([])
-                cell_input = input("Please enter contents for Row" + str(row + 1) +": ")
-                content_cells[-1].append(cell_input)
-            print(content_cells)
-            content_field = columns_logic.new_content_field(content_cells)
-            self._game_field = content_field
-        else:
-            print("Improper field setting")
+        empty_field = columns_logic.new_game_field(field_rows, field_columns)
+        self._game_field = empty_field
+        self.display_board() 
 
     def initial_faller_setup(self) -> None:
         '''
