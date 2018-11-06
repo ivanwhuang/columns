@@ -59,8 +59,8 @@ class ColumnsGame():
         '''
         This function sets up the size of the field and creates the field for our game
         '''
-        field_rows = int(input())
-        field_columns = int(input())
+        field_rows = int(input("# of ROWS for Game Board: "))
+        field_columns = int(input("# of COLUMNS for Game Board: "))
         self._set_field_setting(field_rows, field_columns)
         self.display_board()
 
@@ -70,7 +70,7 @@ class ColumnsGame():
         an empty board or board filled with initialized cells.
         '''
 
-        field_setting = input()
+        field_setting = input("What type of board would you like to start off with? ('EMPTY') or ('CONTENTS): ")
         if field_setting == 'EMPTY':
             empty_field = columns_logic.new_game_field(rows, cols)
             self._game_field = empty_field
@@ -79,7 +79,7 @@ class ColumnsGame():
             content_cells = []
             for row in range(rows):
                 content_cells.append([])
-                cell_input = input()
+                cell_input = input("Please enter contents for Row" + str(row + 1) +": ")
                 content_cells[-1].append(cell_input)
             print(content_cells)
             content_field = columns_logic.new_content_field(content_cells)
