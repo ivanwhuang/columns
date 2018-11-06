@@ -1,6 +1,9 @@
 # Ivan Wan Le Huang 60062626
 import columns_logic
+import random
 
+COLORS = ['A', 'B', 'C', 'D', 'E']
+SIZEOFFALLER = 3 
 
 class ColumnsGame():
     def __init__(self):
@@ -89,30 +92,32 @@ class ColumnsGame():
 
     def initial_faller_setup(self) -> None:
         '''
-        This function creates a faller and checks to see if it can be positioned
-        into the function specified by the user. If the specified column has a filled
-        cell at the top row, then the game ends
+        This function creates a random faller and positions it in a random column. 
+        If the specified column has a filled cell at the top row, then the game ends.
         '''
 
-        while self.game_faller() == None:
-            faller_input = input()
-            if faller_input == "Q":
-                self.quit_game()
-                break
-            else:
-                try:
-                    if len(faller_input)>= 1:
-                        if faller_input[0] == 'F':
-                            self._game_faller = columns_logic.create_faller(faller_input)
-                            if self.game_field().can_place_faller(self.game_faller()) == True:
-                                self.game_field().position_faller(self.game_faller())
+        new_faller = 'F'
 
-                except columns_logic.GameOverError:
-                    print("GAME OVER")
-                except columns_logic.InvalidMoveError:
-                    pass
-                finally:
-                    self.display_board()
+        rand_col = random.randint(1, self._game_field.num_cols())
+        new_faller = new_faller + " " + str(rand_col)
+
+        for x in range(SIZEOFFALLER):
+            new_color = COLORS[random.randint(0, len(COLORS) - 1)]
+            new_faller = new_faller + " " + new_color
+
+        print(new_faller)
+
+        try:
+            self._game_faller = columns_logic.create_faller(new_faller)
+            if self.game_field().can_place_faller(self.game_faller()) == True:
+                self.game_field().position_faller(self.game_faller())
+
+        except columns_logic.GameOverError:
+            print("GAME OVER")
+        except columns_logic.InvalidMoveError:
+            pass
+        finally:
+            self.display_board()
 
 
     def display_board(self) -> None:
@@ -152,7 +157,10 @@ class ColumnsGame():
         try:
             if len(command) >= 1 and current_faller.state() != 'LANDED':
 
-                if command[0] == 'R':
+                if command == "Q":
+                    self.quit_game()
+
+                if command == 'R':
                     current_faller.rotate_faller()
 
                 if command == '<':
