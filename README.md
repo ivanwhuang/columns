@@ -13,4 +13,4 @@ To play the game:
   4. To rotate the colors/pieces of a faller, input "R". 
   5. Input "Q" to quit the game
   
-  
+This project was originally based off of a University assignment, but I modified it to make it feel more like a playable game.  
