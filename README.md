@@ -6,7 +6,15 @@ Columns is a game played quite similarily to Tetris. The basic objective of the 
 
 Here is columns in action on a Sega Genesis --> https://www.youtube.com/watch?v=pFJvY1k-rpM
 
-To play the game:
+## How to Play
+
+Download the repository and run 
+
+```
+python3 columns_interface.py
+```
+
+### To play...
   1. Answer the initial game prompts with desired number of rows and columns for the size of the game board. 
   2. To simulate the passing of time, simply press enter without inputting any text to drop the faller by 1 row. 
   3. To move a faller left or right, input "<" for left and ">" for right. 
